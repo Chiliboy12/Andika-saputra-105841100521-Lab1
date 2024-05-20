@@ -1,3 +1,20 @@
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import ButtonCustom
+const TextCustom = ()=>{
+
+    return(
+    <View style={{
+        flex:1,
+        backgroundColor: 'white',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    }}>
+        <Text style={{
+            fontSize: 30,
+            fontWeight: 'bold',
+            marginTop: 50,
+    }}>
+        Sayur Express </Text>
+        </View>
+    )
+}
+export default TextCustom
