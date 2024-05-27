@@ -13,7 +13,7 @@ const TextCustom = ()=>{
             fontWeight: 'bold',
             marginTop: 50,
     }}>
-        Sayur Express </Text>
+        Bahan Baku Express </Text>
         </View>
     )
 }
