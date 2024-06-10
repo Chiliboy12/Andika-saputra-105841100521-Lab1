@@ -1,15 +1,19 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
-// Import gambar lokal
-import GoogleLogo from './assets/fb.png';
-import FacebookLogo from './assets/gogglee.png';
+import GoogleLogo from '../assets/fb.png';
+import FacebookLogo from '../assets/gogglee.png';
 
-const Login = ({ backgroundColor = '#f7f7f7', text = 'Log in' }) => {
+const Signup=  ({ backgroundColor = '#f7f7f7', text = 'Sign up' }) => {
     return (
         <View style={[styles.container, { backgroundColor }]}>
             <Text style={styles.title}>{text}</Text>
             <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.textInput}
+                    placeholder="Name"
+                    
+                />
                 <TextInput
                     style={styles.textInput}
                     placeholder="Email"
@@ -22,20 +26,20 @@ const Login = ({ backgroundColor = '#f7f7f7', text = 'Log in' }) => {
                 />
             </View>
             <View style={styles.footer}>
-                <Text style={styles.footerText}>Don't have an account? </Text>
-                <Text style={styles.footerLink}>Sign up</Text>
+                <Text style={styles.footerText}>Already have an account? </Text>
+                <Text style={styles.footerLink}>Sign in</Text>
             </View>
-            <TouchableOpacity style={styles.loginButton}>
-                <Text style={styles.loginButtonText}>LOG IN</Text>
+            <TouchableOpacity style={styles.signUpButton}>
+                <Text style={styles.signUpButtonText}>SIGN UP</Text>
             </TouchableOpacity>
-            <Text style={styles.orText}>Or log in with social account</Text>
+            <Text style={styles.orText}>Or sign up with social account</Text>
             <View style={styles.socialButtonsContainer}>
                 <TouchableOpacity style={[styles.socialButton, { marginRight: 10 }]}>
-                    {/* Menggunakan gambar lokal */}
+                    {/* Menggunakan logo lokal */}
                     <Image source={GoogleLogo} style={styles.socialIcon} />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.socialButton}>
-                    {/* Menggunakan gambar lokal */}
+                    {/* Menggunakan logo lokal */}
                     <Image source={FacebookLogo} style={styles.socialIcon} />
                 </TouchableOpacity>
             </View>
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
     },
     footer: {
         flexDirection: 'row',
-        marginBottom: 10,
+        marginBottom: 20,
     },
     footerText: {
         fontSize: 14,
@@ -80,29 +84,28 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: 'red',
     },
-    loginButton: {
+    signUpButton: {
         backgroundColor: 'red',
         padding: 15,
         borderRadius: 4,
         alignItems: 'center',
         width: '100%',
         maxWidth: 400,
-        marginBottom: 10,
+        marginBottom: 20,
     },
-    loginButtonText: {
+    signUpButtonText: {
         color: '#fff',
         fontSize: 16,
     },
     orText: {
-        fontSize: 20,
+        fontSize: 14,
         color: '#777',
-        marginBottom: 20, // Mengurangi margin bottom
+        marginBottom: 20,
     },
     socialButtonsContainer: {
         flexDirection: 'row',
-        justifyContent: 'flex-start', // Mengubah agar ikon sosial berdekatan
-        width: '100%',
-        maxWidth: 150, // Mengatur lebar maksimal untuk memastikan berdekatan
+        justifyContent: 'space-between',
+        width: '10',
     },
     socialButton: {
         width: 50,
@@ -118,9 +121,9 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     socialIcon: {
-        width: 30, // Ubah ukuran menjadi 30
-        height: 30, // Ubah ukuran menjadi 30
+        width: 24,
+        height: 24,
     },
 });
 
-export default Login;
+export default Signup;

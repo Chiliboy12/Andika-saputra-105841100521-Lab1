@@ -1,64 +1,39 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { useFonts } from 'expo-font';
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from './Pages/LoginPage';
+import ForgotPassword from './Pages/ForgotPage';
+import Signup from './Pages/SingUpPage';
+import { Button } from 'react-native';
 
-const App = () => {
-  const [fontsLoaded, fontsError] = useFonts({
-    'Metro-Bold': require('./assets/fonts/Metropolis-Bold.otf'),
-    'Metro-SemiBold': require('./assets/fonts/Metropolis-SemiBold.otf'),
-    'Metro-Medium': require('./assets/fonts/Metropolis-Medium.otf'),
-    'Metro-Black': require('./assets/fonts/Metropolis-Black.otf'),
-  });
-
-  if (!fontsLoaded) {
-    return (
-      <View style={styles.centeredView}>
-        <Text>Font tidak di temukan!</Text>
-      </View>
-    );
-  }
-
+function HomeScreen({navigation}) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.defaultText}>Hello World</Text>
-      <Text style={styles.metroBold}>Metro Bold</Text>
-      <Text style={styles.metroSemiBold}>Metro SemiBold</Text>
-      <Text style={styles.metroMedium}>Metro Medium</Text>
-      <Text style={styles.metroBlack}>Metro Black</Text>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+      <Button
+        title="Go To Login"
+        onPress= {() => navigation.navigate ('SingUpPage')}
+        />
     </View>
+    
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  defaultText: {
-    fontSize: 20,
-  },
-  metroBold: {
-    fontFamily: 'Metro-Bold',
-    fontSize: 30,
-  },
-  metroSemiBold: {
-    fontFamily: 'Metro-SemiBold',
-    fontSize: 30,
-  },
-  metroMedium: {
-    fontFamily: 'Metro-Medium',
-    fontSize: 30,
-  },
-  metroBlack: {
-    fontFamily: 'Metro-Black',
-    fontSize: 30,
-  },
-});
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        {/* <Stack.Screen name="ForgotPage" component={ForgotPassword} />
+        <Stack.Screen name="Login" component={Login} /> */}
+        <Stack.Screen name="SingUpPage" component= {Signup} />
+
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
 export default App;
