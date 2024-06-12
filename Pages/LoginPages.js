@@ -1,47 +1,39 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
-// Import gambar lokal
+import { useNavigation } from '@react-navigation/native';
 import GoogleLogo from '../assets/fb.png';
 import FacebookLogo from '../assets/gogglee.png';
 
+const LoginPages = ({ backgroundColor = '#f7f7f7', text = 'Log in' }) => {
+  const navigation = useNavigation();
 
-const LoginPage = ({ backgroundColor = '#f7f7f7', text = 'Log in' }) => {
-    return (
-        <View style={[styles.container, { backgroundColor }]}>
-            <Text style={styles.title}>{text}</Text>
-            <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Email"
-                    keyboardType="email-address"
-                />
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Password"
-                    secureTextEntry
-                />
-            </View>
-            <View style={styles.footer}>
-                <Text style={styles.footerText}>Don't have an account? </Text>
-                <Text style={styles.footerLink}>Sign up</Text>
-            </View>
-            <TouchableOpacity style={styles.loginButton}>
-                <Text style={styles.loginButtonText}>LOG IN</Text>
-            </TouchableOpacity>
-            <Text style={styles.orText}>Or log in with social account</Text>
-            <View style={styles.socialButtonsContainer}>
-                <TouchableOpacity style={[styles.socialButton, { marginRight: 10 }]}>
-                    {/* Menggunakan gambar lokal */}
-                    <Image source={GoogleLogo} style={styles.socialIcon} />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.socialButton}>
-                    {/* Menggunakan gambar lokal */}
-                    <Image source={FacebookLogo} style={styles.socialIcon} />
-                </TouchableOpacity>
-            </View>
-        </View>
-    );
+  return (
+    <View style={[styles.container, { backgroundColor }]}>
+      <Text style={styles.title}>{text}</Text>
+      <View style={styles.inputContainer}>
+        <TextInput style={styles.textInput} placeholder="Email" keyboardType="email-address" />
+        <TextInput style={styles.textInput} placeholder="Password" secureTextEntry />
+      </View>
+      <View style={styles.footer}>
+        <Text style={styles.footerText} onPress={() => navigation.navigate('ForgotPassword')}>Forgot Password? </Text>
+      </View>
+      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.loginButtonText}>LOG IN</Text>
+      </TouchableOpacity>
+      <Text style={styles.orText}>Or log in with social account</Text>
+      <View style={styles.socialButtonsContainer}>
+        <TouchableOpacity style={[styles.socialButton, { marginRight: 10 }]}>
+          <Image source={GoogleLogo} style={styles.socialIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.socialButton}>
+          <Image source={FacebookLogo} style={styles.socialIcon} />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 };
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -123,4 +115,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LoginPage;
+export default LoginPages

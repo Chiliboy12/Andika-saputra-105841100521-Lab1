@@ -1,31 +1,31 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const ForgotPassword = ({ backgroundColor = '#f7f7f7', text = 'Forgot password' }) => {
-    return (
-        <View style={[styles.container, { backgroundColor }]}>
-            <TouchableOpacity style={styles.backIconContainer}>
-                <Text style={styles.backIcon}>{'<'} </Text>
-            </TouchableOpacity>
-            <Text style={styles.title}>{text}</Text>
-            <Text style={styles.instruction}>
-                Please, enter your email address. You will receive a link to create a new password via email.
-            </Text>
-            <View style={styles.inputContainer}>
-                <Text style={styles.label}>Email</Text>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Email"
-                    keyboardType="email-address"
-                />
-                <Text style={styles.errorMessage}>Not a valid email address. Should be your@email.com</Text>
-            </View>
-            <TouchableOpacity style={styles.sendButton}>
-                <Text style={styles.sendButtonText}>SEND</Text>
-            </TouchableOpacity>
-        </View>
-    );
+const ForgotPages = ({ backgroundColor = '#f7f7f7', text = 'Forgot password' }) => {
+  const navigation = useNavigation();
+
+  return (
+    <View style={[styles.container, { backgroundColor }]}>
+      <TouchableOpacity style={styles.backIconContainer} onPress={() => navigation.goBack()}>
+        <Text style={styles.backIcon}>{'<'} </Text>
+      </TouchableOpacity>
+      <Text style={styles.title}>{text}</Text>
+      <Text style={styles.instruction}>
+        Please, enter your email address. You will receive a link to create a new password via email.
+      </Text>
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Email</Text>
+        <TextInput style={styles.textInput} placeholder="Email" keyboardType="email-address" />
+        <Text style={styles.errorMessage}>Not a valid email address. Should be your@email.com</Text>
+      </View>
+      <TouchableOpacity style={styles.sendButton} onPress={() => navigation.navigate('Send Email')}>
+        <Text style={styles.sendButtonText}>SEND</Text>
+      </TouchableOpacity>
+    </View>
+  );
 };
+
 
 const styles = StyleSheet.create({
     container: {
@@ -98,4 +98,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ForgotPassword;
+export default ForgotPages
