@@ -3,7 +3,6 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'reac
 
 import GoogleLogo from '../assets/fb.png';
 import FacebookLogo from '../assets/gogglee.png';
-
 const Signup=  ({ backgroundColor = '#f7f7f7', text = 'Sign up' }) => {
     return (
         <View style={[styles.container, { backgroundColor }]}>

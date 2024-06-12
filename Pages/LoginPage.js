@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
-
 // Import gambar lokal
 import GoogleLogo from '../assets/fb.png';
 import FacebookLogo from '../assets/gogglee.png';
 
-const Login = ({ backgroundColor = '#f7f7f7', text = 'Log in' }) => {
+
+const LoginPage = ({ backgroundColor = '#f7f7f7', text = 'Log in' }) => {
     return (
         <View style={[styles.container, { backgroundColor }]}>
             <Text style={styles.title}>{text}</Text>
@@ -123,4 +123,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Login;
+export default LoginPage;

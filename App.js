@@ -12,8 +12,16 @@ function HomeScreen({navigation}) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
       <Button
-        title="Go To Login"
+        title="Go To SingUpPage"
         onPress= {() => navigation.navigate ('SingUpPage')}
+        />
+         <Button
+        title="Go To Login"
+        onPress= {() => navigation.navigate ('Login')}
+        />
+         <Button
+        title="Go To ForgotPage"
+        onPress= {() => navigation.navigate ('ForgotPage')}
         />
     </View>
     
@@ -27,8 +35,8 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
-        {/* <Stack.Screen name="ForgotPage" component={ForgotPassword} />
-        <Stack.Screen name="Login" component={Login} /> */}
+         <Stack.Screen name="ForgotPage" component={ForgotPassword} />
+        <Stack.Screen name="Login" component={Login} /> 
         <Stack.Screen name="SingUpPage" component= {Signup} />
 
       </Stack.Navigator>
