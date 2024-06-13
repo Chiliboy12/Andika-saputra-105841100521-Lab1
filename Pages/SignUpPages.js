@@ -1,8 +1,11 @@
+
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import GoogleLogo from '../assets/fb.png';
-import FacebookLogo from '../assets/gogglee.png';
+
+
+import GoogleLogo from '../assets/gogglee.png'; 
+import FacebookLogo from '../assets/fb.png';    
 
 const SignUpPages = ({ backgroundColor = '#f7f7f7', text = 'Sign up' }) => {
   const navigation = useNavigation();
@@ -37,7 +40,6 @@ const SignUpPages = ({ backgroundColor = '#f7f7f7', text = 'Sign up' }) => {
   );
 };
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -70,6 +72,7 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 14,
     color: '#777',
+    fontFamily: 'Metropolis-Bold', 
   },
   footerLink: {
     fontSize: 14,
@@ -87,6 +90,7 @@ const styles = StyleSheet.create({
   signUpButtonText: {
     color: '#fff',
     fontSize: 16,
+    fontFamily: 'Metropolis-Bold', 
   },
   orText: {
     fontSize: 14,
@@ -118,4 +122,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpPages
+export default SignUpPages;

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -28,74 +29,80 @@ const ForgotPages = ({ backgroundColor = '#f7f7f7', text = 'Forgot password' }) 
 
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
-    },
-    backIconContainer: {
-        position: 'absolute',
-        top: 40,
-        left: 20,
-    },
-    backIcon: {
-        fontSize: 24,
-        color: 'black',
-    },
-    title: {
-        fontSize: 32,
-        marginBottom: 20,
-        fontWeight: 'bold',
-    },
-    instruction: {
-        fontSize: 16,
-        textAlign: 'center',
-        marginBottom: 20,
-        paddingHorizontal: 20,
-    },
-    inputContainer: {
-        width: '100%',
-        maxWidth: 400,
-        padding: 20,
-        backgroundColor: '#fff',
-        borderRadius: 8,
-        shadowColor: '#000',
-        shadowOpacity: 0.1,
-        shadowOffset: { width: 0, height: 4 },
-        shadowRadius: 8,
-        elevation: 5,
-        marginBottom: 20,
-    },
-    label: {
-        fontSize: 14,
-        color: 'red',
-        marginBottom: 5,
-    },
-    textInput: {
-        marginBottom: 10,
-        padding: 10,
-        borderWidth: 1,
-        borderColor: 'red',
-        borderRadius: 4,
-        fontSize: 16,
-    },
-    errorMessage: {
-        color: 'red',
-        fontSize: 12,
-    },
-    sendButton: {
-        backgroundColor: 'red',
-        padding: 15,
-        borderRadius: 4,
-        alignItems: 'center',
-        width: '100%',
-        maxWidth: 400,
-    },
-    sendButtonText: {
-        color: '#fff',
-        fontSize: 16,
-    },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  backIconContainer: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+  },
+  backIcon: {
+    fontSize: 24,
+    color: 'black',
+    fontFamily: 'Metropolis-Bold', 
+  },
+  title: {
+    fontSize: 32,
+    marginBottom: 20,
+    fontFamily: 'Metropolis-Bold', 
+  },
+  instruction: {
+    fontSize: 16,
+    textAlign: 'center',
+    marginBottom: 20,
+    paddingHorizontal: 20,
+    fontFamily: 'Metropolis-Bold', 
+  },
+  inputContainer: {
+    width: '100%',
+    maxWidth: 400,
+    padding: 20,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 8,
+    elevation: 5,
+    marginBottom: 20,
+  },
+  label: {
+    fontSize: 14,
+    color: 'red',
+    marginBottom: 5,
+    fontFamily: 'Metropolis-Bold', 
+  },
+  textInput: {
+    marginBottom: 10,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: 'red',
+    borderRadius: 4,
+    fontSize: 16,
+    fontFamily: 'Metropolis-Bold', 
+  },
+  errorMessage: {
+    color: 'red',
+    fontSize: 12,
+    fontFamily: 'Metropolis-Bold', 
+  },
+  sendButton: {
+    backgroundColor: 'red',
+    padding: 15,
+    borderRadius: 4,
+    alignItems: 'center',
+    width: '100%',
+    maxWidth: 400,
+  },
+  sendButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontFamily: 'Metropolis-Bold', 
+  },
 });
 
-export default ForgotPages
+export default ForgotPages;
