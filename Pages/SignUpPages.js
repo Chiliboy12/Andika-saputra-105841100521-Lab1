@@ -1,22 +1,57 @@
-
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
-
-import GoogleLogo from '../assets/gogglee.png'; 
-import FacebookLogo from '../assets/fb.png';    
+import GoogleLogo from '../assets/gogglee.png';
+import FacebookLogo from '../assets/fb.png';
 
 const SignUpPages = ({ backgroundColor = '#f7f7f7', text = 'Sign up' }) => {
   const navigation = useNavigation();
+  const [formSignUp, setForm] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
+  const [modalVisible, setModalVisible] = useState(false);
+  const [signUpStatus, setSignUpStatus] = useState('');
+
+  const onSubmit = () => {
+    if (formSignUp.name && formSignUp.email && formSignUp.password) {
+      setSignUpStatus('Sign up Berhasil');
+      setModalVisible(true);
+      setTimeout(() => {
+        setModalVisible(false);
+        navigation.navigate('Login');
+      }, 2000);
+    } else {
+      setSignUpStatus('Please fill in all fields');
+      setModalVisible(true);
+    }
+  };
 
   return (
     <View style={[styles.container, { backgroundColor }]}>
       <Text style={styles.title}>{text}</Text>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.textInput} placeholder="Name" />
-        <TextInput style={styles.textInput} placeholder="Email" keyboardType="email-address" />
-        <TextInput style={styles.textInput} placeholder="Password" secureTextEntry />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Name"
+          onChangeText={(name) => setForm({ ...formSignUp, name })}
+          value={formSignUp.name}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Email"
+          keyboardType="email-address"
+          onChangeText={(email) => setForm({ ...formSignUp, email })}
+          value={formSignUp.email}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Password"
+          secureTextEntry
+          onChangeText={(password) => setForm({ ...formSignUp, password })}
+          value={formSignUp.password}
+        />
       </View>
       <View style={styles.footer}>
         <Text style={styles.footerText}>Already have an account? </Text>
@@ -24,7 +59,7 @@ const SignUpPages = ({ backgroundColor = '#f7f7f7', text = 'Sign up' }) => {
           <Text style={styles.footerLink}>Sign in</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('Sign Up')}>
+      <TouchableOpacity style={styles.signUpButton} onPress={onSubmit}>
         <Text style={styles.signUpButtonText}>SIGN UP</Text>
       </TouchableOpacity>
       <Text style={styles.orText}>Or sign up with social account</Text>
@@ -36,6 +71,25 @@ const SignUpPages = ({ backgroundColor = '#f7f7f7', text = 'Sign up' }) => {
           <Image source={FacebookLogo} style={styles.socialIcon} />
         </TouchableOpacity>
       </View>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>{signUpStatus}</Text>
+            <TouchableOpacity
+              style={[styles.signUpButton, { backgroundColor: '#007BFF' }]}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text style={styles.signUpButtonText}>OK</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -72,7 +126,6 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 14,
     color: '#777',
-    fontFamily: 'Metropolis-Bold', 
   },
   footerLink: {
     fontSize: 14,
@@ -90,7 +143,6 @@ const styles = StyleSheet.create({
   signUpButtonText: {
     color: '#fff',
     fontSize: 16,
-    fontFamily: 'Metropolis-Bold', 
   },
   orText: {
     fontSize: 14,
@@ -119,6 +171,28 @@ const styles = StyleSheet.create({
   socialIcon: {
     width: 30,
     height: 30,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalView: {
+    width: 300,
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.25,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    fontSize: 18,
+    marginBottom: 20,
   },
 });
 
