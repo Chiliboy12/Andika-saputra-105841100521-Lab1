@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import GoogleLogo from '../assets/gogglee.png';
 import FacebookLogo from '../assets/fb.png';
 
-const SignUpPages = ({ backgroundColor = '#f7f7f7', text = 'Sign up' }) => {
+const SignUpPages = ({ backgroundColor = '#006400', text = 'Sign up' }) => {
   const navigation = useNavigation();
   const [formSignUp, setForm] = useState({
     name: '',
@@ -29,77 +29,85 @@ const SignUpPages = ({ backgroundColor = '#f7f7f7', text = 'Sign up' }) => {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor }]}>
-      <Text style={styles.title}>{text}</Text>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Name"
-          onChangeText={(name) => setForm({ ...formSignUp, name })}
-          value={formSignUp.name}
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder="Email"
-          keyboardType="email-address"
-          onChangeText={(email) => setForm({ ...formSignUp, email })}
-          value={formSignUp.email}
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder="Password"
-          secureTextEntry
-          onChangeText={(password) => setForm({ ...formSignUp, password })}
-          value={formSignUp.password}
-        />
-      </View>
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>Already have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.footerLink}>Sign in</Text>
-        </TouchableOpacity>
-      </View>
-      <TouchableOpacity style={styles.signUpButton} onPress={onSubmit}>
-        <Text style={styles.signUpButtonText}>SIGN UP</Text>
-      </TouchableOpacity>
-      <Text style={styles.orText}>Or sign up with social account</Text>
-      <View style={styles.socialButtonsContainer}>
-        <TouchableOpacity style={[styles.socialButton, { marginRight: 10 }]}>
-          <Image source={GoogleLogo} style={styles.socialIcon} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.socialButton}>
-          <Image source={FacebookLogo} style={styles.socialIcon} />
-        </TouchableOpacity>
-      </View>
-
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>{signUpStatus}</Text>
-            <TouchableOpacity
-              style={[styles.signUpButton, { backgroundColor: '#007BFF' }]}
-              onPress={() => setModalVisible(false)}
-            >
-              <Text style={styles.signUpButtonText}>OK</Text>
-            </TouchableOpacity>
-          </View>
+    <View style={[styles.outerContainer, { backgroundColor }]}>
+      <View style={styles.container}>
+        <Text style={styles.title}>{text}</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Name"
+            onChangeText={(name) => setForm({ ...formSignUp, name })}
+            value={formSignUp.name}
+          />
+          <TextInput
+            style={styles.textInput}
+            placeholder="Email"
+            keyboardType="email-address"
+            onChangeText={(email) => setForm({ ...formSignUp, email })}
+            value={formSignUp.email}
+          />
+          <TextInput
+            style={styles.textInput}
+            placeholder="Password"
+            secureTextEntry
+            onChangeText={(password) => setForm({ ...formSignUp, password })}
+            value={formSignUp.password}
+          />
         </View>
-      </Modal>
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>Already have an account? </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Text style={styles.footerLink}>Sign in</Text>
+          </TouchableOpacity>
+        </View>
+        <TouchableOpacity style={styles.signUpButton} onPress={onSubmit}>
+          <Text style={styles.signUpButtonText}>SIGN UP</Text>
+        </TouchableOpacity>
+        <Text style={styles.orText}>Or sign up with social account</Text>
+        <View style={styles.socialButtonsContainer}>
+          <TouchableOpacity style={[styles.socialButton, { marginRight: 10 }]}>
+            <Image source={GoogleLogo} style={styles.socialIcon} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.socialButton}>
+            <Image source={FacebookLogo} style={styles.socialIcon} />
+          </TouchableOpacity>
+        </View>
+
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => setModalVisible(false)}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>{signUpStatus}</Text>
+              <TouchableOpacity
+                style={[styles.signUpButton, { backgroundColor: '#007BFF' }]}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={styles.signUpButtonText}>OK</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  outerContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  container: {
+    backgroundColor: 'white',
+    borderRadius: 20,
     padding: 20,
+    width: '90%',
+    alignItems: 'center',
   },
   title: {
     fontSize: 32,
@@ -132,7 +140,7 @@ const styles = StyleSheet.create({
     color: 'red',
   },
   signUpButton: {
-    backgroundColor: 'red',
+    backgroundColor: 'green',
     padding: 15,
     borderRadius: 4,
     alignItems: 'center',
